@@ -9,8 +9,8 @@ const { check, validationResult } = require("express-validator");
 const User = require("../../models/User");
 
 // @route  GET api/auth
-// @desc   Test router
-// @access Public
+// @desc   Get user by token
+// @access Private
 router.get("/", auth, async (req, res) => {
   try {
     // * req.user is now authenticated due to middleware
@@ -23,7 +23,7 @@ router.get("/", auth, async (req, res) => {
 });
 
 // @route  POST api/auth
-// @desc   authenticate user & get token
+// @desc   Authenticate user & get token
 // @access Public
 router.post(
   "/",
