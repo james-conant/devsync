@@ -67,6 +67,8 @@ router.post(
           if (err) {
             throw err;
           }
+
+        // res.data being dispatched from auth.js action file to the reducer
           res.json({ token });
         }
       );
