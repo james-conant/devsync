@@ -89,7 +89,6 @@ const AddEducation = ({ addEducation, history }) => {
               type="checkbox"
               name="current"
               checked={current}
-              value=""
               value={current}
               onChange={(e) => {
                 setFormData({ ...formData, current: !current });
@@ -132,4 +131,4 @@ AddEducation.propTypes = {
   addEducation: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addEducation })(AddEducation);
+export default connect(null, { addEducation })(withRouter(AddEducation));
