@@ -105,7 +105,8 @@ router.put("/like/:id", auth, async (req, res) => {
 
     // Check if the post has already been liked
     if (post.likes.some((like) => like.user.toString() === req.user.id)) {
-      return res.status(400).json({ msg: "Post already liked" });
+      // return res.status(400).json({ msg: "Post already liked" });
+      return console.log("Post already liked");
     }
 
     post.likes.unshift({ user: req.user.id });
@@ -128,7 +129,8 @@ router.put("/unlike/:id", auth, async (req, res) => {
 
     // Check if the post has already been liked
     if (!post.likes.some((like) => like.user.toString() === req.user.id)) {
-      return res.status(400).json({ msg: "Post has not yet been liked" });
+      // return res.status(400).json({ msg: "Post has not yet been liked" });
+      return console.log("Post already liked");
     }
 
     // Keeps all of the likes except from the current logged in user
