@@ -1,0 +1,7 @@
+{
+  "mongoURI": "mongodb+srv://6dude:devsync1234@devsync-gyva4.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "githubClientId": "a36aa116dab5584aa037",
+  "githubSecret": "df7a1736efd2bf1cc3ee1407fba0ebaf92633ab1",
+  "githubToken": "e3fd755ee483433fc2a23a7cfb2a79850ff26e52"
+}
