@@ -110,6 +110,7 @@ export const addPost = (formData) => async (dispatch) => {
 export const getPost = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/posts/${id}`);
+
     dispatch({
       type: GET_POST,
       payload: res.data,
@@ -130,18 +131,18 @@ export const addComment = (postId, formData) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post(
-      `api/posts/comment/${postId}`,
-      formData,
-      config
-    );
+    console.log("res before actions", postId, formData);
+
+    const res = await axios.post(`/posts/comment/${postId}`, formData, config);
+
+    console.log("res from actions", res);
 
     dispatch({
       type: ADD_COMMENT,
       payload: res.data,
     });
 
-    dispatch(setAlert("Comment Added", "success", 4000));
+    dispatch(setAlert("Comment Added", "success"));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -153,7 +154,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
 // Delete comment
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
-    const res = await axios.delete(`api/posts/comment/${postId}/${commentId}`);
+    axios.delete(`api/posts/comment/${postId}/${commentId}`);
 
     dispatch({
       type: REMOVE_COMMENT,
