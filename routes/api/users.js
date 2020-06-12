@@ -36,11 +36,14 @@ router.post(
           .json({ errors: [{ msg: "User alerady exists" }] });
       }
       // get users gravatar
-      const avatar = gravatar.url(email, {
-        s: "200",
-        r: "pg",
-        d: "mm",
-      });
+      const avatar = normalize(
+        gravatar.url(email, {
+          s: "200",
+          r: "pg",
+          d: "mm",
+        }),
+        { forceHttps: true }
+      );
 
       user = new User({
         name,
@@ -68,7 +71,7 @@ router.post(
             throw err;
           }
 
-        // res.data being dispatched from auth.js action file to the reducer
+          // res.data being dispatched from auth.js action file to the reducer
           res.json({ token });
         }
       );
